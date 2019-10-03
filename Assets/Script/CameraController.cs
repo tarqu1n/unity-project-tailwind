@@ -11,18 +11,18 @@ public class CameraController : MonoBehaviour
 
     protected float _CameraDistance = 10f;
     
-    [Header("Movement Speeds")]
+    [Header("Speeds")]
     public float MouseSensitivity = 4f;
     public float ScrollSensitvity = 2f;
     public float OrbitDampening = 10f;
     public float ScrollDampening = 6f;
+    public float PanDampening = 10f;
 
     [Header("Constraints")]
-    public float UpperVerticalRotationLimit = 30f;
-    public float LowerVerticalRotationLimit = 90f;
+    public float UpperVerticalRotationLimit = 90f;
+    public float LowerVerticalRotationLimit = 30f;
     public float MaxZoomDistance = 50f;
     public float MinZoomDistance = 3f;
-
 
     public bool CameraDisabled = false;
 
@@ -30,6 +30,9 @@ public class CameraController : MonoBehaviour
     {
         this._XForm_Camera = this.transform;
         this._XForm_Parent = this.transform.parent;
+
+        this._XForm_Parent.rotation = Quaternion.Euler(UpperVerticalRotationLimit, 0, 0);
+        _LocalRotation.y = UpperVerticalRotationLimit;
     }
 
     void LateUpdate()
@@ -66,11 +69,11 @@ public class CameraController : MonoBehaviour
                 forward.Normalize();
                 right.Normalize();
 
-                float x = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime * OrbitDampening;
-                float z = -Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime * OrbitDampening;
-                this._XForm_Parent.position += forward * z;
-                this._XForm_Parent.position -= right * x;
-                // this._XForm_Parent.transform.Translate(forward * z * right * x);
+                float x = -Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime * PanDampening;
+                float z = -Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime * PanDampening;
+
+                // move parent position with mouse
+                this._XForm_Parent.position += (forward * z) + (right * x);
             }
         }
 
@@ -87,8 +90,6 @@ public class CameraController : MonoBehaviour
         //Actual Camera Rig Transformations
         Quaternion QT = Quaternion.Euler(_LocalRotation.y, _LocalRotation.x, 0);
         this._XForm_Parent.rotation = Quaternion.Lerp(this._XForm_Parent.rotation, QT, Time.deltaTime * OrbitDampening);
-
-        // this._XForm_Parent.position = new Vector3(_LocalPosition.x, 0f, _LocalPosition.z);
 
         if (this._XForm_Camera.localPosition.z != this._CameraDistance * -1f)
         {

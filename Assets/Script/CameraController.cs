@@ -31,8 +31,8 @@ public class CameraController : MonoBehaviour
         this._XForm_Camera = this.transform;
         this._XForm_Parent = this.transform.parent;
 
-        this._XForm_Parent.rotation = Quaternion.Euler(UpperVerticalRotationLimit, 0, 0);
-        _LocalRotation.y = UpperVerticalRotationLimit;
+        this._XForm_Parent.rotation = Quaternion.Euler(LowerVerticalRotationLimit, 0, 0);
+        _LocalRotation.y = LowerVerticalRotationLimit;
     }
 
     void LateUpdate()
@@ -49,10 +49,10 @@ public class CameraController : MonoBehaviour
                 _LocalRotation.y -= Input.GetAxis("Mouse Y") * MouseSensitivity;
 
                 //Clamp the y Rotation to horizon and not flipping over at the top
-                if (_LocalRotation.y < UpperVerticalRotationLimit)
-                    _LocalRotation.y = UpperVerticalRotationLimit;
-                else if (_LocalRotation.y > LowerVerticalRotationLimit)
+                if (_LocalRotation.y < LowerVerticalRotationLimit)
                     _LocalRotation.y = LowerVerticalRotationLimit;
+                else if (_LocalRotation.y > UpperVerticalRotationLimit)
+                    _LocalRotation.y = UpperVerticalRotationLimit;
             }
         }
 

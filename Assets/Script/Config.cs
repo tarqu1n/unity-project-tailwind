@@ -11,4 +11,9 @@ public class Config
         { "Spawn Point", "Spawn Point" },
         { "Terminate Point", "Terminate Point" },
     };
+
+    public enum ResourceTypes
+    {
+        Wood = 0
+    }
 }

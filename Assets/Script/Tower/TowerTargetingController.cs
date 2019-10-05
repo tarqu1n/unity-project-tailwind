@@ -35,12 +35,10 @@ public class TowerTargetingController : MonoBehaviour
 
     void AquireTarget()
     {
-        Collider selectedCollider = null;
-        float selectedColliderDistance = Mathf.Infinity;
-
-        if (inRangeColliderList.Count > 0)
+        if (!currentTarget && inRangeColliderList.Count > 0)
         {
-            
+            Collider selectedCollider = null;
+            float selectedColliderDistance = Mathf.Infinity;
             //TODO: this could be a point for optimisation (dont clone collider list but store and remove any colliders that no longer exist)
             foreach (Collider collider in inRangeColliderList.ToArray())
             {
@@ -59,7 +57,17 @@ public class TowerTargetingController : MonoBehaviour
                 }
             }
 
+            // if monster was destroyed during loop
+            if (!selectedCollider)
+            {
+                inRangeColliderList.Remove(selectedCollider);
+                AquireTarget();
+                return;
+            }
             currentTarget = selectedCollider.gameObject;
+        } else if (!currentTarget)
+        {
+            currentTarget = null;
         }
     }
 

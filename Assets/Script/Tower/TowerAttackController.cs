@@ -38,12 +38,13 @@ public class TowerAttackController : MonoBehaviour
 
     public void Attack()
     {
+        
         if (targetingController.currentTarget)
         {
             GameObject instance = Instantiate(projectileObject, projectileSpawn.transform.position, Quaternion.identity);
             instance.GetComponent<Projectile>().target = targetingController.currentTarget;
 
-            currentAttackTimer = startAttackSpeed;
+            currentAttackTimer = currentAttackSpeed;
         }
     }
 }

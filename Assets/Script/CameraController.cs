@@ -40,6 +40,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
             CameraDisabled = !CameraDisabled;
 
+        // handle orbiting
         if (!CameraDisabled && Input.GetMouseButton(1))
         {
             //Rotation of the Camera based on Mouse Coordinates
@@ -56,7 +57,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-
+        // handle panning
         if (!CameraDisabled && Input.GetMouseButton(0))
         {
             if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
@@ -69,8 +70,8 @@ public class CameraController : MonoBehaviour
                 forward.Normalize();
                 right.Normalize();
 
-                float x = -Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime * PanDampening;
-                float z = -Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime * PanDampening;
+                float x = -Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime * PanDampening * this._CameraDistance;
+                float z = -Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime * PanDampening * this._CameraDistance;
 
                 // move parent position with mouse
                 this._XForm_Parent.position += (forward * z) + (right * x);

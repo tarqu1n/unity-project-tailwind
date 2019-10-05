@@ -8,5 +8,7 @@ public class Config
     {
         { "Monster", "Monster" },
         { "Ground", "Ground" },
+        { "Spawn Point", "Spawn Point" },
+        { "Terminate Point", "Terminate Point" },
     };
 }

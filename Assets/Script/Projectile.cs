@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public float speed;
-    public int damage;
+    public float damage;
 
     public GameObject target;
 
@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
 
     private void OnHitTargetMonster(Collider collision)
     {
-        MonsterController monsterController = collision.gameObject.GetComponent<MonsterController>();
+        MonsterController monsterController = collision.gameObject.transform.parent.GetComponent<MonsterController>();
         monsterController.RecieveDamage(damage);
         Die();
     }

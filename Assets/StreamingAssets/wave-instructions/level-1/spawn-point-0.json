@@ -1,0 +1,41 @@
+{
+  "waves": [
+    {
+      "waveIndex": 0,
+      "instructions": [
+        {
+          "type": 1,
+          "monsters": [ "one" ],
+          "timer": 2
+        },
+        {
+          "type": 1,
+          "monsters": [ "one", "one" ],
+          "timer": 2
+        },
+        {
+          "type": 0,
+          "monsters": [ "one" ],
+          "timer": 0.5,
+          "reps":  10
+        }
+      ]
+    },
+    {
+      "waveIndex": 1,
+      "instructions": [
+        {
+          "type": 1,
+          "monsters": [ "one", "one", "one" ],
+          "timer": 2
+        },
+        {
+          "type": 0,
+          "monsters": [ "one", "one" ],
+          "timer": 0.5
+        }
+      ]
+    }
+  ]
+  
+}

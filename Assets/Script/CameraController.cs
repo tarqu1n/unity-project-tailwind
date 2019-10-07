@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
             CameraDisabled = !CameraDisabled;
 

@@ -27,6 +27,5 @@ public class ResourceManager : MonoBehaviour
     {
         { Config.ResourceTypes.Wood, 0 }
     };
-
 }
 

@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Terminate Point
   - Spawn Point
+  - Building
   layers:
   - Default
   - TransparentFX

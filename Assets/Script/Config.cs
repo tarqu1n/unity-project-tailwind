@@ -6,6 +6,7 @@ public class Config
 {
     public static IDictionary<string, string> tagList = new Dictionary<string, string>()
     {
+        { "Building", "Building" },
         { "Monster", "Monster" },
         { "Ground", "Ground" },
         { "Spawn Point", "Spawn Point" },

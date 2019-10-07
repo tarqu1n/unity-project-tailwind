@@ -14,6 +14,8 @@ public class MonsterController : MonoBehaviour
     public float currentHealth;
     public GameObject target;
 
+    public event System.Action<GameObject> OnObjectDestroyed;
+
     private MonsterManager monsterManager;
     private NavMeshAgent navAgent;
     void Start()
@@ -49,6 +51,12 @@ public class MonsterController : MonoBehaviour
     {
         monsterManager.OnMonsterDie(gameObject);
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        // TODO: Fiddle with this to work out how C# events work and feed back when destroyed
+        OnObjectDestroyed?.Invoke(gameObject);
     }
 
     void Escape()

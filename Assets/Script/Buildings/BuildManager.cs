@@ -17,7 +17,7 @@ public class BuildManager : MonoBehaviour
 
         currentBuildingInstance = Instantiate(building.prefab);
         currentBuildingInstanceController = currentBuildingInstance.GetComponent<BuildingController>();
-        currentBuildingInstanceController.SetPlacing(true);
+        currentBuildingInstanceController.isPlacing = true;
     }
 
     public void FixedUpdate()

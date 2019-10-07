@@ -1,4 +1,4 @@
-﻿Shader "Unlit/TransparentTintOutline"
+﻿Shader "Custom/TransparentTintOutline"
 {
     Properties
     {

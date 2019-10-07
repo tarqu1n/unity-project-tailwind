@@ -8,4 +8,6 @@ public class LevelManager : MonoBehaviour
 
     public MonsterManager monsterManager;
     public GameObject[] terminatePoints;
+
+    public Shader[] customShaders;
 }

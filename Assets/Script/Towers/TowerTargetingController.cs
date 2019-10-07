@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class TowerTargetingController : MonoBehaviour
 {
-    public GameObject currentTarget;
-    public float startRange;
 
+    public float startRange;
+    public GameObject rangeObject;
+
+    [Header("Readonly")]
+    public GameObject currentTarget;
     private float currentRange;
 
     private List<Collider> inRangeColliderList = new List<Collider>();
     private SphereCollider sphereCollider;
-    void Start()
+    void Awake()
     {
-        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider = rangeObject.GetComponent<SphereCollider>();
 
         SetRange(startRange);
     }
-
 
     void SetRange (float newRange)
     {
@@ -69,6 +71,16 @@ public class TowerTargetingController : MonoBehaviour
         {
             currentTarget = null;
         }
+    }
+
+    public void Disable()
+    {
+        sphereCollider.enabled = false;
+    }
+
+    public void Enable()
+    {
+        sphereCollider.enabled = false;
     }
 
     private void OnTriggerEnter(Collider target)

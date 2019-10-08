@@ -14,5 +14,5 @@ public class SOBuilding : ScriptableObject
     public GameObject prefab;
     
     [Header("Costs")]
-    public int costWood = 0;
+    public ResourceCost[] cost;
 }

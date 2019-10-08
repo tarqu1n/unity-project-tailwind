@@ -26,7 +26,7 @@ public class BuildingPlacementController : MonoBehaviour
             SetPlacing(true);
         }
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (isPlacing)
         {
@@ -52,7 +52,7 @@ public class BuildingPlacementController : MonoBehaviour
         onBuildingPlaced?.Invoke(gameObject);
     }
 
-    private void CancelPlaceBuilding()
+    public void CancelPlaceBuilding()
     {
         SetPlacing(false);
         onPlacementCancelled?.Invoke(gameObject);

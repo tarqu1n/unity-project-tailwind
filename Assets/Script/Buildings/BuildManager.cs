@@ -10,6 +10,21 @@ public class BuildManager : MonoBehaviour
     private SOBuilding currentBuilding;
     private GameObject currentBuildingInstance;
     private BuildingPlacementController currentBuildingPlacementController;
+    private ResourceManager resourceManager;
+    private void Start()
+    {
+        resourceManager = GetComponent<ResourceManager>();
+    }
+    private void FixedUpdate()
+    {
+        if (isPlacing)
+        {
+            if (!resourceManager.CanAffordCost(currentBuilding.cost))
+            {
+                currentBuildingPlacementController.CancelPlaceBuilding();
+            }
+        }
+    }
     public void Build(SOBuilding building)
     {
         isPlacing = true;
@@ -25,6 +40,8 @@ public class BuildManager : MonoBehaviour
 
     public void HandleBuildingPlaced(GameObject building)
     {
+        resourceManager.SpendCost(currentBuilding.cost);
+
         isPlacing = false;
         currentBuildingPlacementController.onBuildingPlaced -= HandleBuildingPlaced;
         currentBuildingPlacementController.onPlacementCancelled -= HandlePlacementCancelled;

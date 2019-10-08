@@ -7,15 +7,18 @@ public class BuildingManager : MonoBehaviour
     public SOBuilding[] towers;
 
     private BuildManager buildManager;
+    private ResourceManager resourceManager;
 
     private void Start()
     {
         buildManager = GetComponent<BuildManager>();
+        resourceManager = GetComponent<ResourceManager>();
     }
+
     public void OnTowerBuildRequest(string name)
     {
         SOBuilding tower = GetTowerByName(name);
-        if (tower)
+        if (tower && resourceManager.CanAffordCost(tower.cost))
         {
             buildManager.Build(tower);
         }

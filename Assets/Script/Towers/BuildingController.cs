@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingController : MonoBehaviour
 {
     public BuildingType buildingType;
+    public ResourceCost[] cost;
 
     [Header("Read Only")]
     public GameObject model;

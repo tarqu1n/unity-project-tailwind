@@ -11,8 +11,12 @@ public class CameraController : MonoBehaviour
     protected Vector3 _LocalPosition;
 
     protected float _CameraDistance = 10f;
-    
-    [Header("Speeds")]
+
+    [Header("Input")]
+    public Config.MouseButtonMap orbitMouseButton = Config.MouseButtonMap.Middle;
+    public Config.MouseButtonMap panMouseButton = Config.MouseButtonMap.Right;
+
+    [Header("Speed")]
     public float MouseSensitivity = 4f;
     public float ScrollSensitvity = 2f;
     public float OrbitDampening = 10f;
@@ -45,7 +49,7 @@ public class CameraController : MonoBehaviour
             CameraDisabled = !CameraDisabled;
 
         // handle orbiting
-        if (!CameraDisabled && Input.GetMouseButton(1))
+        if (!CameraDisabled && Input.GetMouseButton((int) orbitMouseButton))
         {
             //Rotation of the Camera based on Mouse Coordinates
             if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
@@ -62,7 +66,7 @@ public class CameraController : MonoBehaviour
         }
 
         // handle panning
-        if (!CameraDisabled && Input.GetMouseButton(0))
+        if (!CameraDisabled && Input.GetMouseButton((int) panMouseButton))
         {
             if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
             {

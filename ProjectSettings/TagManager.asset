@@ -9,6 +9,7 @@ TagManager:
   - Terminate Point
   - Spawn Point
   - Building
+  - Track
   layers:
   - Default
   - TransparentFX

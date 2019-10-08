@@ -55,8 +55,9 @@ public class MonsterController : MonoBehaviour
 
     private void OnDestroy()
     {
-        // TODO: Fiddle with this to work out how C# events work and feed back when destroyed
         OnObjectDestroyed?.Invoke(gameObject);
+        // the mesh is where our hitbox is so stuff will care when gets destroyed too
+        OnObjectDestroyed?.Invoke(mesh);
     }
 
     void Escape()

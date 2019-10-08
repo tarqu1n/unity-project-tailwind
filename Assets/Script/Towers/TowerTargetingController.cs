@@ -80,7 +80,7 @@ public class TowerTargetingController : MonoBehaviour
 
     public void Enable()
     {
-        sphereCollider.enabled = false;
+        sphereCollider.enabled = true;
     }
 
     private void OnTriggerEnter(Collider target)

@@ -9,49 +9,33 @@ public class BuildManager : MonoBehaviour
 
     private SOBuilding currentBuilding;
     private GameObject currentBuildingInstance;
-    private BuildingController currentBuildingInstanceController;
+    private BuildingPlacementController currentBuildingPlacementController;
     public void Build(SOBuilding building)
     {
         isPlacing = true;
         currentBuilding = building;
 
         currentBuildingInstance = Instantiate(building.prefab);
-        currentBuildingInstanceController = currentBuildingInstance.GetComponent<BuildingController>();
-        currentBuildingInstanceController.isPlacing = true;
+        currentBuildingPlacementController = currentBuildingInstance.GetComponent<BuildingPlacementController>();
+        currentBuildingPlacementController.enabled = true;
+        currentBuildingPlacementController.isPlacing = true;
+        currentBuildingPlacementController.onBuildingPlaced += HandleBuildingPlaced;
+        currentBuildingPlacementController.onPlacementCancelled += HandlePlacementCancelled;
     }
 
-    public void FixedUpdate()
+    public void HandleBuildingPlaced(GameObject building)
     {
-        if (isPlacing && currentBuilding)
-        {
-            ShowPlacement();
-        }
+        isPlacing = false;
+        currentBuildingPlacementController.onBuildingPlaced -= HandleBuildingPlaced;
+        currentBuildingPlacementController.onPlacementCancelled -= HandlePlacementCancelled;
+        currentBuildingInstance = null;
+        currentBuilding = null;
     }
 
-    public void ShowPlacement()
+    public void HandlePlacementCancelled(GameObject building)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit[] hits = Physics.RaycastAll(ray, 50f);
-        RaycastHit highestHit = new RaycastHit(); // set it so its not undefined
-        float highestY = -Mathf.Infinity;
-        foreach (RaycastHit hit in hits)
-        {
-            if (hit.transform.CompareTag(Config.tagList["Ground"]))
-            {
-                if (hit.point.y > highestY)
-                {
-                    highestY = hit.point.y;
-                    highestHit = hit;
-                }
-                
-            }
-        }
-
-        NavMeshHit navHit;
-        if (highestY > -Mathf.Infinity && NavMesh.SamplePosition(highestHit.point, out navHit, 3f, NavMesh.AllAreas))
-        {
-            currentBuildingInstance.transform.position = navHit.position;
-        }
+        isPlacing = false;
+        currentBuildingInstance = null;
+        currentBuilding = null;
     }
 }

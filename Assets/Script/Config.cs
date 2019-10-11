@@ -12,6 +12,7 @@ public class Config
         { "Track", "Track" },
         { "Spawn Point", "Spawn Point" },
         { "Terminate Point", "Terminate Point" },
+        { "Resource Object", "Resource Object" }
     };
 
     public enum ResourceTypes

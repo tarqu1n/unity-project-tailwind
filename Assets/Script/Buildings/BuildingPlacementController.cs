@@ -110,11 +110,11 @@ public class BuildingPlacementController : MonoBehaviour
             collisionTag == Config.tagList["Track"] ||
             collisionTag == Config.tagList["Spawn Point"] ||
             collisionTag == Config.tagList["Terminate Point"] ||
+            collisionTag == Config.tagList["Resource Object"] || 
             collisionTag == Config.tagList["Monster"]))
         {
             whilePlacingCollisionIds.Add(collision.gameObject.GetInstanceID());
             rend.material.SetColor("_TintColour", Color.red);
-            Debug.Log(collisionTag);
             if (collisionTag == Config.tagList["Monster"])
             {
                 collision.gameObject.transform.parent.gameObject.GetComponent<MonsterController>().OnObjectDestroyed += OnCollidedMonsterDestroyed;

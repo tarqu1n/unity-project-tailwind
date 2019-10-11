@@ -22,16 +22,19 @@ public class SawmillBuildingController : BuildingController
 
     public override void Enable()
     {
-        
+        rangeObject.GetComponent<SphereCollider>().enabled = true;
     }
     public override void Disable()
     {
-        
+        rangeObject.GetComponent<SphereCollider>().enabled = false;
     }
 
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.CompareTag(Config.tagList["Resource Object"]))
+        {
+            Debug.Log(collision.gameObject.tag);
+        }
     }
 
     public void OnTriggerExit(Collider collision)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8453011712193690901}
   m_Layer: 0
   m_Name: Sawmill
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,8 +123,21 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &3376149265151384074
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587733738245287979}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.39528242, z: 1}
+  m_Center: {x: 0, y: 0.19139121, z: 0}
 --- !u!1001 &5515513788111005986
 PrefabInstance:
   m_ObjectHideFlags: 0

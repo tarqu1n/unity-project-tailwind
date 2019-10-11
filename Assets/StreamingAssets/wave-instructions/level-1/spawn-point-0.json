@@ -14,10 +14,15 @@
           "timer": 2
         },
         {
+          "type": 1,
+          "monsters": [ "one", "one", "one", "one", "one", "one", "one", "one", "one", "one" ],
+          "timer": 4
+        },
+        {
           "type": 0,
           "monsters": [ "one" ],
           "timer": 0.5,
-          "reps":  10
+          "reps": 10
         }
       ]
     },

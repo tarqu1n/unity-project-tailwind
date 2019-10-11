@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6661788292864849494}
-  - component: {fileID: 6661788292864849489}
+  - component: {fileID: 5482419228897365666}
   - component: {fileID: 209528535311574147}
   - component: {fileID: 6661788292864849488}
   - component: {fileID: 6661788292864849495}
@@ -38,7 +38,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6661788292864849489
+--- !u!114 &5482419228897365666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,10 +47,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6661788292864849490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdeba4b10a32db84e87b6901c0058da8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ee9f334a6eb38c4abcbd94eece081cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 0
+  cost:
+  - type: 0
+    amount: 100
   model: {fileID: 6661788294284200865}
 --- !u!114 &209528535311574147
 MonoBehaviour:

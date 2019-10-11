@@ -114,7 +114,7 @@ public class BuildingPlacementController : MonoBehaviour
         {
             whilePlacingCollisionIds.Add(collision.gameObject.GetInstanceID());
             rend.material.SetColor("_TintColour", Color.red);
-
+            Debug.Log(collisionTag);
             if (collisionTag == Config.tagList["Monster"])
             {
                 collision.gameObject.transform.parent.gameObject.GetComponent<MonsterController>().OnObjectDestroyed += OnCollidedMonsterDestroyed;

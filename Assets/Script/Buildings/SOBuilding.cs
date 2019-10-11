@@ -8,6 +8,7 @@ public class SOBuilding : ScriptableObject
     [Header("Copy")]
     public new string name;
     public string description;
+    public BuildingType type;
 
     [Header("Assets")]
     public Sprite thumbnail;

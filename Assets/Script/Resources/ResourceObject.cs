@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ResourceObject : MonoBehaviour
 {
-    public Config.ResourceTypes type;
+    public Config.ResourceObjectType objectType;
+    public Config.ResourceTypes resourceType;
     public float startAmount;
+
+    [Header("Read Only")]
     public float currentAmount;
 
     void Start()

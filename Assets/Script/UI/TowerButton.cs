@@ -18,7 +18,7 @@ public class TowerButton : MonoBehaviour
     }
     private void OnBtnClick()
     {
-        buildingManager.OnTowerBuildRequest(buildingData.name);
+        buildingManager.OnBuildBuildingRequest(buildingData.name);
     }
 
 

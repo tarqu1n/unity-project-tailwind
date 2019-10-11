@@ -19,6 +19,11 @@ public class Config
         Wood = 0
     }
 
+    public enum ResourceObjectType
+    {
+        Tree = 0,
+    }
+
     public enum MouseButtonMap
     {
         Left = 0,

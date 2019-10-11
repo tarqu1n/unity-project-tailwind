@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 336299402193208941}
   - component: {fileID: 8787015700417363035}
   - component: {fileID: 3084201936889823394}
+  - component: {fileID: 1992399182193515935}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -79,6 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1992399182193515935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670890400219001982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6236564, y: 1.5367922, z: 0.60203797}
+  m_Center: {x: -0.0013504624, y: 0.19778752, z: -0.012667805}
 --- !u!1 &5618667547033498820
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,9 +102,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5857297691244337880}
+  - component: {fileID: -7647788346951438103}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Untagged
+  m_TagString: Resource Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,3 +125,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7647788346951438103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618667547033498820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ee2f1c7cd8c9e4ab7701230c7eb210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  startAmount: 50
+  currentAmount: 0

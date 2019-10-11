@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    public SOBuilding[] towers;
+    public SOBuilding[] buildings;
 
     private BuildManager buildManager;
     private ResourceManager resourceManager;
@@ -15,22 +15,22 @@ public class BuildingManager : MonoBehaviour
         resourceManager = GetComponent<ResourceManager>();
     }
 
-    public void OnTowerBuildRequest(string name)
+    public void OnBuildBuildingRequest(string name)
     {
-        SOBuilding tower = GetTowerByName(name);
-        if (tower && resourceManager.CanAffordCost(tower.cost))
+        SOBuilding building = GetBuildingByName(name);
+        if (building && resourceManager.CanAffordCost(building.cost))
         {
-            buildManager.Build(tower);
+            buildManager.Build(building);
         }
     }
 
-    private SOBuilding GetTowerByName(string name)
+    private SOBuilding GetBuildingByName(string name)
     {
-        foreach(SOBuilding tower in towers)
+        foreach(SOBuilding building in buildings)
         {
-            if (tower.name == name)
+            if (building.name == name)
             {
-                return tower;
+                return building;
             }
         }
 
@@ -41,4 +41,5 @@ public class BuildingManager : MonoBehaviour
 public enum BuildingType
 {
     Tower = 0,
+    ResourceGatherer = 1,
 }

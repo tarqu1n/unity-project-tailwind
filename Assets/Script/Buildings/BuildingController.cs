@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+[RequireComponent(typeof(BuildingPlacementController))]
 public abstract class BuildingController : MonoBehaviour
 {
     public BuildingType buildingType;

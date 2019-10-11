@@ -16,13 +16,13 @@ MonoBehaviour:
   - gameObject: {fileID: -927199367670048503, guid: 3a4800f3350267f439d57dbdb781d70c,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 2.2
       m_RotationRangeMin: {x: 0, y: 0, z: 0}
       m_RotationRangeMax: {x: 0, y: 360, z: 0}
-      m_ScaleRangeMin: {x: 0.05, y: 0.05, z: 0.05}
-      m_ScaleRangeMax: {x: 0.1, y: 0.1, z: 0.1}
-      m_UniformScale: {x: 1, y: 1}
-      m_UniformBool: 0
+      m_ScaleRangeMin: {x: 0.1, y: 0.05, z: 0.05}
+      m_ScaleRangeMax: {x: 0.2, y: 0.1, z: 0.1}
+      m_UniformScale: {x: 0.1, y: 0.2}
+      m_UniformBool: 1
       m_XRotationBool: 0
       m_YRotationBool: 1
       m_ZRotationBool: 0
@@ -30,3 +30,20 @@ MonoBehaviour:
       m_YScaleBool: 1
       m_ZScaleBool: 1
     name: tree
+  - gameObject: {fileID: 5618667547033498820, guid: 78b18984283e54f4f8769d23032041d6,
+      type: 3}
+    settings:
+      m_Strength: 46.008064
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 360, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 0.1, y: 0.2}
+      m_UniformBool: 1
+      m_XRotationBool: 0
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 1
+      m_YScaleBool: 1
+      m_ZScaleBool: 1
+    name: Tree

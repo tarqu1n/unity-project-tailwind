@@ -17,7 +17,7 @@ public class TowersPanel : MonoBehaviour
 
     void BuildButtons()
     {
-        foreach (SOBuilding building in buildingManager.towers)
+        foreach (SOBuilding building in buildingManager.buildings)
         {
             GameObject instance = Instantiate(towerButton, transform);
             instance.GetComponent<TowerButton>().buildingData = building;

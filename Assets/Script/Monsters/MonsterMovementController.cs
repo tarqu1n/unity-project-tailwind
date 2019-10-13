@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(MonsterController))]
 public class MonsterMovementController : MonoBehaviour
 {
     public Waypoint currentWaypoint;

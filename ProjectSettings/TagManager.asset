@@ -11,6 +11,7 @@ TagManager:
   - Building
   - Track
   - Resource Object
+  - Unit
   layers:
   - Default
   - TransparentFX

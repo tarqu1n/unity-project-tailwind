@@ -15,7 +15,7 @@ public class MonsterManager : MonoBehaviour
         // build monster dictionary
         foreach (GameObject monster in monsters)
         {
-            string name = monster.GetComponent<MonsterController>().name;
+            string name = monster.GetComponent<UnitStateController>().name;
             monsterMap.Add(name, monster);
         }
     }

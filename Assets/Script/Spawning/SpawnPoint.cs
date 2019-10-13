@@ -71,7 +71,8 @@ public class SpawnPoint : MonoBehaviour
             if (monsterObject)
             {
                 GameObject monsterInstance = Instantiate(monsterObject, transform.position, Quaternion.identity);
-                monsterInstance.GetComponent<MonsterMovementController>().currentWaypoint = waypoint;
+                // need to wait until started before can call set target
+                monsterInstance.GetComponent<UnitStateController>().spawnPoint = waypoint;
                 monsterManager.OnMonsterSpawn(monsterInstance);
             }
         }

@@ -85,7 +85,10 @@ public class TowerTargetingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider target)
     {
-        if (target.tag == Config.tagList["Monster"] && !inRangeColliderList.Contains(target))
+        if (
+            target.tag == Config.tagList["Unit"] &&
+            target.gameObject.transform.parent.GetComponent<UnitStateController>().type == Config.UnitType.Monster &&
+            !inRangeColliderList.Contains(target))
         {
             inRangeColliderList.Add(target);
         }
@@ -93,10 +96,14 @@ public class TowerTargetingController : MonoBehaviour
 
     private void OnTriggerExit(Collider target)
     {
-        if (target.tag == Config.tagList["Monster"] && inRangeColliderList.Contains(target))
+        if (
+            target.tag == Config.tagList["Unit"] &&
+            target.gameObject.transform.parent.GetComponent<UnitStateController>().type == Config.UnitType.Monster && 
+            inRangeColliderList.Contains(target))
         {
             inRangeColliderList.Remove(target);
 
+            // unset current target if it goes out of range
             if (!currentTarget || currentTarget.GetInstanceID() == target.gameObject.GetInstanceID())
             {
                 currentTarget = null;

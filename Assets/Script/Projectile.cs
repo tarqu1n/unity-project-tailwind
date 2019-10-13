@@ -30,10 +30,10 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnHitTargetMonster(Collider collision)
+    private void OnHitTarget(Collider collision)
     {
-        MonsterController monsterController = collision.gameObject.transform.parent.GetComponent<MonsterController>();
-        monsterController.RecieveDamage(damage);
+        UnitStateController unitStateController = collision.gameObject.transform.parent.GetComponent<UnitStateController>();
+        unitStateController.RecieveDamage(damage);
         Die();
     }
 
@@ -41,11 +41,11 @@ public class Projectile : MonoBehaviour
     {
         if (target && collision.gameObject.GetInstanceID() == target.gameObject.GetInstanceID())
         {
-            OnHitTargetMonster(collision);
+            OnHitTarget(collision);
         }
-        else if (!target && collision.gameObject.tag == Config.tagList["Monster"])
+        else if (!target && collision.gameObject.tag == Config.tagList["Unit"])
         {
-            OnHitTargetMonster(collision);
+            OnHitTarget(collision);
         }
         else if (!target && collision.gameObject.tag == Config.tagList["Ground"])
         {

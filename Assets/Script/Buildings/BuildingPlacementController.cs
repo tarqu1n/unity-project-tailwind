@@ -111,13 +111,13 @@ public class BuildingPlacementController : MonoBehaviour
             collisionTag == Config.tagList["Spawn Point"] ||
             collisionTag == Config.tagList["Terminate Point"] ||
             collisionTag == Config.tagList["Resource Object"] || 
-            collisionTag == Config.tagList["Monster"]))
+            collisionTag == Config.tagList["Unit"]))
         {
             whilePlacingCollisionIds.Add(collision.gameObject.GetInstanceID());
             rend.material.SetColor("_TintColour", Color.red);
-            if (collisionTag == Config.tagList["Monster"])
+            if (collisionTag == Config.tagList["Unit"])
             {
-                collision.gameObject.transform.parent.gameObject.GetComponent<MonsterController>().OnObjectDestroyed += OnCollidedMonsterDestroyed;
+                collision.gameObject.transform.parent.GetComponent<UnitStateController>().OnObjectDestroyed += OnCollidedMonsterDestroyed;
             }
         }
 
@@ -125,8 +125,6 @@ public class BuildingPlacementController : MonoBehaviour
 
     private void OnCollidedMonsterDestroyed(GameObject gameObject)
     {
-        Debug.Log("oncollidedmonsterdestroyed");
-        // TODO: doesnt work because its a different game object
         if (whilePlacingCollisionIds.Contains(gameObject.GetInstanceID()))
         {
             whilePlacingCollisionIds.Remove(gameObject.GetInstanceID());

@@ -38,7 +38,13 @@ public class PassiveMonsterBehaviour : Behaviour
         }
     }
 
-    public override void HandleRecieveDamage(float damage) { }
+    public override void HandleRecieveDamage(float damage)
+    {
+        if (unitStateController.currentHealth <= 0)
+        {
+            unitStateController.Die();
+        }
+    }
 
     public new void HandleDie() { }
 

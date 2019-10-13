@@ -8,6 +8,7 @@ public class UnitStateController : MonoBehaviour
 {
     [Header("Config")]
     public new string name;
+    public Config.UnitType type;
     public float startHealth;
     public bool isPlayerControllable;
     public Waypoint spawnPoint;

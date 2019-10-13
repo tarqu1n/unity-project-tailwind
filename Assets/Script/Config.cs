@@ -16,6 +16,12 @@ public class Config
         { "Unit", "Unit" }
     };
 
+    public enum UnitType
+    {
+        Hero,
+        Monster,
+    }
+
     public enum ResourceTypes
     {
         Wood = 0

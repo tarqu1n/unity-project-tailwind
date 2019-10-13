@@ -7023,7 +7023,7 @@ GameObject:
   - component: {fileID: 782715378}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7069,6 +7069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: 
+  type: 0
   startHealth: 10
   isPlayerControllable: 1
   spawnPoint: {fileID: 0}

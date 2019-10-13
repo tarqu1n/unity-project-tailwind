@@ -15,3 +15,11 @@ a
  - Builders must be assigned to buildings for them to operate, some buildings require more than one builder to operate.
  - The player must balance their resources, providing for their workers, battling the on map enemies to get resources / items they need to unlock their economy all while defending against waves of enemies coming through the track.
  - Player can only pause the game during the time between waves.
+
+ ## Monster Movement Notes
+ Monsters can:
+	- Follow waypoint to waypoint to the exit
+	- Be spawned at any given position
+	- Attack player controlled targets such as buildings or units
+	- Be constrained to the track / allowed to wander anywhere (configurable)
+	- Stop at their maximum range to attack a target

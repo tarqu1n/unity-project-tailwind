@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5926372746399235501}
   - component: {fileID: 6585667679542065675}
+  - component: {fileID: -6919235848666766969}
   - component: {fileID: 3428115866845620531}
   m_Layer: 0
   m_Name: Monster
@@ -165,6 +166,20 @@ MonoBehaviour:
   mesh: {fileID: 3874313815642882843}
   currentHealth: 0
   target: {fileID: 0}
+  navAgent: {fileID: 0}
+--- !u!114 &-6919235848666766969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404425398262713487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3d3044f256d604eaf19256378c6e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaypoint: {fileID: 0}
 --- !u!54 &3428115866845620531
 Rigidbody:
   m_ObjectHideFlags: 0

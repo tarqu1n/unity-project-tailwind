@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(MonsterMovementController))]
 public class MonsterController : MonoBehaviour
 {
     public new string name;
@@ -12,12 +13,11 @@ public class MonsterController : MonoBehaviour
 
     [Header("Read Only")]
     public float currentHealth;
-    public GameObject target;
+    public NavMeshAgent navAgent;
 
     public event System.Action<GameObject> OnObjectDestroyed;
 
     private MonsterManager monsterManager;
-    private NavMeshAgent navAgent;
     void Start()
     {
         GameObject levelManagerObject = GameObject.Find("/LevelManager");
@@ -25,18 +25,6 @@ public class MonsterController : MonoBehaviour
 
         currentHealth = startHealth;
         navAgent = mesh.GetComponent<NavMeshAgent>();
-
-        // this may need to be in fixed update to activate avoiding collisions
-        if (target)
-        {
-            navAgent.SetDestination(target.transform.position);
-        }
-    }
-
-    public void SetTarget(GameObject newTarget)
-    {
-        target = newTarget;
-        navAgent.SetDestination(target.transform.position);
     }
 
     public void RecieveDamage (float damage)
@@ -65,6 +53,7 @@ public class MonsterController : MonoBehaviour
         monsterManager.OnMonsterEscape(gameObject);
         Destroy(gameObject);
     }
+
     public void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == Config.tagList["Terminate Point"])

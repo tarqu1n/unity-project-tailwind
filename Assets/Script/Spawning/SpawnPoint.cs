@@ -5,10 +5,12 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     public List<WaveInstruction> instructionQueue;
-    
+    public Waypoint waypoint;
+
     public bool finishedSpawningCurrentWave = false;
     private MonsterManager monsterManager;
     private LevelManager levelManager;
+
 
     void Start()
     {
@@ -69,7 +71,7 @@ public class SpawnPoint : MonoBehaviour
             if (monsterObject)
             {
                 GameObject monsterInstance = Instantiate(monsterObject, transform.position, Quaternion.identity);
-                monsterInstance.GetComponent<MonsterController>().target = levelManager.terminatePoints[targetTerminatePointIndex];
+                monsterInstance.GetComponent<MonsterMovementController>().currentWaypoint = waypoint;
                 monsterManager.OnMonsterSpawn(monsterInstance);
             }
         }

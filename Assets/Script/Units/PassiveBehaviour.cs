@@ -14,4 +14,8 @@ public class PassiveBehaviour : Behaviour
     public new void HandleDie() { }
 
     public override void HandleCollisionWithTerminatePoint(Collider collision) { }
+
+    public override void HandleUnitEnterRange(GameObject gameObject) { }
+
+    public override void HandleUnitExitRange(GameObject gameObject) { }
 }

@@ -19,4 +19,6 @@ public abstract class Behaviour : MonoBehaviour
     public abstract void HandleMoveTargetInRange();
     public void HandleDie() { }
     public abstract void HandleCollisionWithTerminatePoint(Collider collision);
+    public abstract void HandleUnitEnterRange(GameObject gameObject);
+    public abstract void HandleUnitExitRange(GameObject gameObject);
 }

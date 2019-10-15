@@ -53,4 +53,21 @@ public class PassiveMonsterBehaviour : Behaviour
         monsterManager.OnMonsterEscape(gameObject);
         Destroy(gameObject);
     }
+
+    public override void HandleUnitEnterRange(GameObject gameObject)
+    {
+        if (gameObject.GetComponent<UnitStateController>().type == Config.UnitType.Hero) 
+        {
+            unitStateController.model.GetComponent<Renderer>().material.color = Color.red;
+        }
+        
+    }
+
+    public override void HandleUnitExitRange(GameObject gameObject)
+    {
+        if (gameObject.GetComponent<UnitStateController>().type == Config.UnitType.Hero)
+        {
+            unitStateController.model.GetComponent<Renderer>().material.color = Color.white;
+        }
+    }
 }

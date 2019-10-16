@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 6617958746628266075}
   - component: {fileID: 3033260053968463704}
   - component: {fileID: 2718995285846450755}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AgroRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}

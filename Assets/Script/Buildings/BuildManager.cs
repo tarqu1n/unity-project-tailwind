@@ -32,6 +32,7 @@ public class BuildManager : MonoBehaviour
 
         currentBuildingInstance = Instantiate(building.prefab);
         currentBuildingPlacementController = currentBuildingInstance.GetComponent<BuildingPlacementController>();
+        currentBuildingInstance.transform.position = new Vector3(0f, 9999f, 0f);
         currentBuildingPlacementController.enabled = true;
         currentBuildingPlacementController.isPlacing = true;
         currentBuildingPlacementController.onBuildingPlaced += HandleBuildingPlaced;

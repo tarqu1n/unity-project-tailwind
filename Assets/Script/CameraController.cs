@@ -12,6 +12,11 @@ public class CameraController : MonoBehaviour
 
     protected float _CameraDistance = 10f;
 
+    [Header("Config")]
+    public bool KeyboardPanningEnabled = true;
+    public bool MousePanningEnabled = false;
+    public bool CameraDisabled = false;
+
     [Header("Input")]
     public Config.MouseButtonMap orbitMouseButton = Config.MouseButtonMap.Middle;
     public Config.MouseButtonMap panMouseButton = Config.MouseButtonMap.Right;
@@ -22,14 +27,13 @@ public class CameraController : MonoBehaviour
     public float OrbitDampening = 10f;
     public float ScrollDampening = 6f;
     public float PanDampening = 10f;
+    public float PanKeyboardSpeed = 3f;
 
     [Header("Constraints")]
     public float UpperVerticalRotationLimit = 90f;
     public float LowerVerticalRotationLimit = 30f;
     public float MaxZoomDistance = 50f;
     public float MinZoomDistance = 3f;
-
-    public bool CameraDisabled = false;
 
     void Start()
     {
@@ -66,7 +70,7 @@ public class CameraController : MonoBehaviour
         }
 
         // handle panning
-        if (!CameraDisabled && Input.GetMouseButton((int) panMouseButton))
+        if (!CameraDisabled && MousePanningEnabled && Input.GetMouseButton((int) panMouseButton))
         {
             if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
             {
@@ -84,6 +88,38 @@ public class CameraController : MonoBehaviour
                 // move parent position with mouse
                 this._XForm_Parent.position += (forward * z) + (right * x);
             }
+        }
+
+        //handle panning from keyboard
+        if (!CameraDisabled && KeyboardPanningEnabled)
+        {
+            Vector3 panningPos = new Vector3();
+            Vector3 forward = this._XForm_Parent.transform.forward;
+            Vector3 right = this._XForm_Parent.transform.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
+
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
+            {
+                panningPos.z += PanKeyboardSpeed * PanDampening * Time.deltaTime * this._CameraDistance;
+            }
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+            {
+                panningPos.z -= PanKeyboardSpeed * PanDampening * Time.deltaTime * this._CameraDistance;
+            }
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+            {
+                panningPos.x += PanKeyboardSpeed * PanDampening * Time.deltaTime * this._CameraDistance;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+            {
+                panningPos.x -= PanKeyboardSpeed * PanDampening * Time.deltaTime * this._CameraDistance;
+            }
+
+            this._XForm_Parent.position += (forward * panningPos.z) + (right * panningPos.x);
         }
 
         //Zooming Input from our Mouse Scroll Wheel

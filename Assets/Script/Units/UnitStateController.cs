@@ -19,28 +19,19 @@ public class UnitStateController : MonoBehaviour
 
     [Header("Read Only State")]
     public float currentHealth;
-    public bool isPlayerSelected = false;
-    public GameObject currentTargetUnit;
-    
+    public bool isPlayerSelected = false;   
 
     public event System.Action<GameObject> OnObjectDestroyed;
 
     private UnitMovementController unitMovementController;
+    private UnitRangeController unitRangeController;
 
     private void Start()
     {
         unitMovementController = GetComponent<UnitMovementController>();
+        unitRangeController = GetComponent<UnitRangeController>();
 
         currentHealth = startHealth;
-    }
-
-    private void Update()
-    {
-        if (currentTargetUnit)
-        {
-            // TODO unit has another unit as a target
-            // move to it and attack it if possible
-        }
     }
 
     public void RecieveDamage (float damage)
@@ -74,11 +65,8 @@ public class UnitStateController : MonoBehaviour
 
             if (hit.transform.gameObject.CompareTag("Unit"))
             {
-                UnitStateController unitStateController = hit.transform.gameObject.GetComponentInParent<UnitStateController>();
-                if (unitStateController.type == Config.UnitType.Monster)
-                {
-                    this.currentTargetUnit = hit.transform.gameObject;
-                }
+                GameObject unit = hit.transform.parent.gameObject;
+                currentBehaviour.HandleOrderToTargetUnit(unit);
             } else
             {
                 unitMovementController.SetTarget(hit.point);

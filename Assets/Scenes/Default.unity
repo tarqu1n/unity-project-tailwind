@@ -7019,6 +7019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782715381}
   - component: {fileID: 782715380}
+  - component: {fileID: 782715383}
   - component: {fileID: 782715379}
   - component: {fileID: 782715378}
   - component: {fileID: 782715382}
@@ -7043,6 +7044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitStateController: {fileID: 0}
   unitMovementController: {fileID: 0}
+  unitActionController: {fileID: 0}
 --- !u!114 &782715379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7103,10 +7105,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.1
-  m_Speed: 1
-  m_Acceleration: 8
+  m_Speed: 2
+  m_Acceleration: 4
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 999
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -7115,6 +7117,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &782715383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782715377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b635801b68b93429a6fdd98f188ffb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTarget: {fileID: 0}
 --- !u!1 &785740757 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 05bf315a33c72b54ebd18c87869b016b,
@@ -19878,6 +19893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc70a02e0fe78c342a8abd6dd01dc0c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KeyboardPanningEnabled: 1
+  MousePanningEnabled: 0
+  CameraDisabled: 0
   orbitMouseButton: 2
   panMouseButton: 1
   MouseSensitivity: 4
@@ -19885,11 +19903,11 @@ MonoBehaviour:
   OrbitDampening: 10
   ScrollDampening: 6
   PanDampening: 0.2
+  PanKeyboardSpeed: 3
   UpperVerticalRotationLimit: 90
   LowerVerticalRotationLimit: 30
   MaxZoomDistance: 50
   MinZoomDistance: 3
-  CameraDisabled: 0
 --- !u!81 &2071520316
 AudioListener:
   m_ObjectHideFlags: 0

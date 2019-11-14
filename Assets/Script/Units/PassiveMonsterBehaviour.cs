@@ -18,13 +18,14 @@ public class PassiveMonsterBehaviour : Behaviour
             unitMovementController.SetTarget(unitStateController.spawnPoint);
         }
     }
+
     public override void HandleSetMoveTarget() { }
     public override void HandleSetSelected() { }
 
     public override void HandleMoveTargetInRange() {
-        UnitTarget currentTarget = unitMovementController.currentTarget;
+        UnitMovementTarget currentTarget = unitMovementController.currentTarget;
 
-        if (currentTarget.type == UnitTarget.Type.Waypoint)
+        if (currentTarget.type == UnitMovementTarget.Type.Waypoint)
         {
             Waypoint nextWaypoint = currentTarget.waypoint.GetNext();
             if (nextWaypoint)
@@ -70,4 +71,14 @@ public class PassiveMonsterBehaviour : Behaviour
             unitStateController.model.GetComponent<Renderer>().material.color = Color.white;
         }
     }
+
+    public override void HandleDidAttackCurrentTarget() { 
+    
+    }
+
+    public override void HandleAttackTargetSet() { 
+    
+    }
+
+    public override void HandleOrderToTargetUnit(GameObject unit) { }
 }

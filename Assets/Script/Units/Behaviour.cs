@@ -7,6 +7,7 @@ public abstract class Behaviour : MonoBehaviour
     [Header("Read Only")]
     public UnitStateController unitStateController;
     public UnitMovementController unitMovementController;
+    public UnitActionController unitActionController;
     private void Start()
     {
         unitStateController = GetComponent<UnitStateController>();
@@ -21,4 +22,8 @@ public abstract class Behaviour : MonoBehaviour
     public abstract void HandleCollisionWithTerminatePoint(Collider collision);
     public abstract void HandleUnitEnterRange(GameObject gameObject);
     public abstract void HandleUnitExitRange(GameObject gameObject);
+    public abstract void HandleDidAttackCurrentTarget();
+    public abstract void HandleAttackTargetSet();
+    public abstract void HandleOrderToTargetUnit(GameObject unit);
+    
 }

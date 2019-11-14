@@ -9,7 +9,7 @@ public class UnitMovementController : MonoBehaviour
     public float targetStopDistance = 0.1f;
 
     [Header("Read Only")]
-    public UnitTarget currentTarget;
+    public UnitMovementTarget currentTarget;
 
     private UnitStateController unitStateController;
 
@@ -25,9 +25,9 @@ public class UnitMovementController : MonoBehaviour
 
     public void SetTarget (Vector3 pos)
     {
-        currentTarget = new UnitTarget()
+        currentTarget = new UnitMovementTarget()
         {
-            type = UnitTarget.Type.Position,
+            type = UnitMovementTarget.Type.Position,
             position = pos
         };
 
@@ -38,9 +38,9 @@ public class UnitMovementController : MonoBehaviour
 
     public void SetTarget (Waypoint waypoint)
     {
-        currentTarget = new UnitTarget()
+        currentTarget = new UnitMovementTarget()
         {
-            type = UnitTarget.Type.Waypoint,
+            type = UnitMovementTarget.Type.Waypoint,
             waypoint = waypoint,
             position = waypoint.transform.position
         };
@@ -50,17 +50,20 @@ public class UnitMovementController : MonoBehaviour
         unitStateController.currentBehaviour.HandleSetMoveTarget();
     }
 
-    public void SetTarget (GameObject obj, bool isStatic)
+    public void SetTarget (GameObject obj, UnitMovementTarget.Type type)
     {
-        currentTarget = new UnitTarget()
+        currentTarget = new UnitMovementTarget()
         {
-            type = isStatic ? UnitTarget.Type.StaticObject : UnitTarget.Type.DynamicObject,
+            type = type,
             gameObject = obj,
-            position = obj.transform.position
         };
 
+        if (type == UnitMovementTarget.Type.Unit)
+        {
+            obj.GetComponent<UnitStateController>().OnObjectDestroyed += OnMovementTargetDestroyed;
+        }
         navAgent.autoBraking = true;
-        navAgent.SetDestination(currentTarget.position);
+        navAgent.SetDestination(currentTarget.gameObject.transform.position);
         unitStateController.currentBehaviour.HandleSetMoveTarget();
     }
 
@@ -75,10 +78,21 @@ public class UnitMovementController : MonoBehaviour
         {
             unitStateController.currentBehaviour.HandleMoveTargetInRange();
         }
+
+        if (currentTarget != null && currentTarget.type == UnitMovementTarget.Type.Unit)
+        {
+            navAgent.SetDestination(currentTarget.gameObject.transform.position);
+        }
+
+    }
+
+    public void OnMovementTargetDestroyed(GameObject obj)
+    {
+        ClearCurrentTarget();
     }
 }
 
-public class UnitTarget
+public class UnitMovementTarget
 {
     public Type type;
     public Vector3 position;
@@ -89,7 +103,6 @@ public class UnitTarget
     {
         Position,
         Waypoint,
-        StaticObject,
-        DynamicObject,
+        Unit,
     }
 }

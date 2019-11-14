@@ -19,6 +19,18 @@ public class UnitRangeController : MonoBehaviour
         
     }
 
+    public bool IsTargetInRange(GameObject target)
+    {
+        for (int i = 0; i < inRangeUnits.Count; i++)
+        {
+            if (inRangeUnits[i] == target)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.CompareTag(Config.tagList["Unit"]))

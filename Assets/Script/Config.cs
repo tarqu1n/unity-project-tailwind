@@ -8,7 +8,7 @@ public class Config
     {
         { "Building", "Building" },
         { "Monster", "Monster" },
-        { "Ground", "Ground" },
+        { "Ground", "Navigable Terrain" },
         { "Track", "Track" },
         { "Spawn Point", "Spawn Point" },
         { "Terminate Point", "Terminate Point" },

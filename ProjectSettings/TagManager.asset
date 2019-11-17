@@ -12,6 +12,7 @@ TagManager:
   - Track
   - Resource Object
   - Unit
+  - Navigable Terrain
   layers:
   - Default
   - TransparentFX

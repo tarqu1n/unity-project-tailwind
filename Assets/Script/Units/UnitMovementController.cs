@@ -20,7 +20,7 @@ public class UnitMovementController : MonoBehaviour
 
     public void SetCanMove (bool canMove)
     {
-        navAgent.isStopped = canMove;
+        navAgent.isStopped = !canMove;
     }
 
     public void SetTarget (Vector3 pos)
@@ -70,6 +70,7 @@ public class UnitMovementController : MonoBehaviour
     public void ClearCurrentTarget()
     {
         this.currentTarget = null;
+        navAgent.ResetPath();
     }
 
     private void FixedUpdate()

@@ -25,7 +25,7 @@ public class PassiveBehaviour : Behaviour
 
     public override void HandleUnitExitRange(GameObject gameObject) { }
 
-    public override void HandleDidAttackCurrentTarget() { }
+    public override void HandleDidAttackCurrentTarget() {}
 
     public override void HandleAttackTargetSet() {
         unitMovementController.SetTarget(unitActionController.attackTarget, UnitMovementTarget.Type.Unit);

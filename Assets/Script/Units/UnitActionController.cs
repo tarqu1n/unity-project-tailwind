@@ -33,6 +33,8 @@ public class UnitActionController : MonoBehaviour
 
     public void SetAttackTarget(GameObject target)
     {
+        ClearAttackTarget();
+
         attackTarget = target;
         UnitStateController targetStateController = target.GetComponent<UnitStateController>();
 
@@ -40,6 +42,13 @@ public class UnitActionController : MonoBehaviour
         unitStateController.currentBehaviour.HandleAttackTargetSet();
     }
 
+    public void ClearAttackTarget()
+    {
+        if (attackTarget)
+        {
+            attackTarget.GetComponent<UnitStateController>().OnObjectDestroyed -= OnAttackTargetUnitDie;
+        }
+    }
     public void OnAttackTargetUnitDie(GameObject gameObject)
     {
         attackTarget = null;
@@ -53,6 +62,7 @@ public class UnitActionController : MonoBehaviour
             if (Vector3.Distance(attackTarget.transform.position, transform.position) <= weaponRange)
             {
                 targetStateController.RecieveDamage(weaponDamage);
+
                 WeaponAttackTimer = weaponAttackSpeed;
                 unitStateController.currentBehaviour.HandleDidAttackCurrentTarget();
                 Debug.Log("Attack" + unitStateController.name);
